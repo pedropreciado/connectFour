@@ -38,7 +38,6 @@ window.addEventListener('DOMContentLoaded', () => {
         .querySelector('#close-button')
         .addEventListener('click', function(event) {
             modal.style.display = 'none';
-            console.log(playerOne, playerTwo)
             new ConnectFour(board, playerOne, playerTwo);
         });
 });
