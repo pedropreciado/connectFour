@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Connect Four</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <script src="./src/bundle.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1 id="current-player">
+            
+        </h1>    
+    </div>
+    <div id="connect-four"></div>
+    
+    <div id="modal">
+        <div class="modal-form">
+            <h1>
+                Connect Four
+            </h1>
+
+            Player 1 name and color: 
+            <div class="player-container">
+            <input type="text" class="name-input" id="player-1-name"/>
+            <div id='selected-color-one' class="color-select"></div>
+            </div>
+            
+            <div class="color-container">
+                <div id="red-one" class="color-select" data-value="red"></div>
+                <div id="blue-one" class="color-select" data-value="blue"></div>
+                <div id="green-one" class="color-select" data-value="green"></div>
+                <div id="black-one" class="color-select" data-value="black"></div>
+            </div> 
+            
+            Player 2 name and color:
+            <div class="player-container">
+            <input type="text" class="name-input" id="player-2-name"/>
+             <div id='selected-color-two' class="color-select"></div>
+            </div>
+            
+            <div class="color-container">
+                <div id="red-two" class="color-select" data-value="red"></div>
+                <div id="blue-two" class="color-select" data-value="blue"></div>
+                <div id="green-two" class="color-select" data-value="green"></div>
+                <div id="black-two" class="color-select" data-value="black"></div>
+            </div>
+            <button id="close-button">Start Game</button>
+
+        </div>
+    </div>
+</body>
+
+</html>
