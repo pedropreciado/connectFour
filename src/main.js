@@ -1,12 +1,12 @@
+import AI from './ai';
 import ConnectFour from './connect_four';
 
 window.addEventListener('DOMContentLoaded', () => {
     let modal = document.querySelector('#modal');
     let board = document.getElementById('connect-four');
     let playerOne = { color: 'red', name: 'player one'};
-    let playerTwo = { color: 'black', name: 'player two' };
+    let playerTwo = { color: 'black', name: 'player two', isAI: false };
 
-    
     document
         .querySelectorAll('.name-input')
         .forEach((input) => {
@@ -33,11 +33,20 @@ window.addEventListener('DOMContentLoaded', () => {
                     .add(this.dataset.value);
             });
         });
-                
+
+        document
+            .getElementById('ai-check')
+            .addEventListener('change', function() {
+                playerTwo = this.checked
+                    ? new AI('computer', 'blue')
+                    : playerTwo;
+            });
+        
     document
         .querySelector('#close-button')
         .addEventListener('click', function(event) {
             modal.style.display = 'none';
+            
             new ConnectFour(board, playerOne, playerTwo);
         });
 });

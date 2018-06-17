@@ -1,18 +1,20 @@
+import AI from './ai';
+
 export default class ConnectFour {
     constructor(board, playerOne, playerTwo) {
         this.board = board;
         this.currentPlayer = playerOne;
         this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
         
         this.setup();
+        this.playerTwo = playerTwo;
         this.gamePlay();
     }
 
     gamePlay() {
         let cols = document.querySelectorAll('.col.empty');
-        let game = this;
-
+        let game = this; 
+                
         this.promptPlayer();
         
         cols.forEach((col) => {
@@ -21,18 +23,14 @@ export default class ConnectFour {
 
                 top.classList.add(`selecting-${game.currentPlayer.color}`);
             });
-        });
 
-        cols.forEach((col) => {
             col.addEventListener('mouseleave', function(event) {
                 let top = game.getTop(col.dataset.col);
                 
                 top.classList.remove(`selecting-${game.currentPlayer.color}`);
             });
-        });
-
-        cols.forEach((col) => {
-            col.addEventListener('click', function(event) {
+           
+            col.addEventListener('click', function (event) {
                 let top = game.getTop(col.dataset.col);
 
                 top.classList.remove(`selecting-${game.currentPlayer.color}`);
@@ -41,15 +39,14 @@ export default class ConnectFour {
                 top.setAttribute('data-player', game.currentPlayer.color);
 
                 let isOver = game.checkForWinner(top.dataset);
-                
+
                 if (isOver) {
-                    game.showWinner();                                        
+                    game.showWinner();
                     return;
                 } else {
                     game.switchPlayers();
                     top.dispatchEvent(new Event('mouseenter'));
                 }
-
             });
         });
     }
@@ -105,7 +102,11 @@ export default class ConnectFour {
         this.currentPlayer = this.currentPlayer === this.playerOne
                             ? this.playerTwo 
                             : this.playerOne; 
-        this.promptPlayer();
+        if (this.currentPlayer.isAI) {
+            this.playerTwo.makeMove(this.board);
+        } else {
+            this.promptPlayer();
+        }                             
     }
     
     reset() {
