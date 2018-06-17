@@ -34,19 +34,19 @@ window.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        document
-            .getElementById('ai-check')
-            .addEventListener('change', function() {
-                playerTwo = this.checked
-                    ? new AI('computer', 'blue')
-                    : playerTwo;
-            });
+        // document
+        //     .getElementById('ai-check')
+        //     .addEventListener('change', function() {
+        //         playerTwo = this.checked
+        //             ? new AI('computer', 'blue')
+        //             : playerTwo;
+        //     });
         
     document
         .querySelector('#close-button')
         .addEventListener('click', function(event) {
             modal.style.display = 'none';
-            
+
             new ConnectFour(board, playerOne, playerTwo);
         });
 });
