@@ -5,9 +5,9 @@ export default class ConnectFour {
         this.board = board;
         this.currentPlayer = playerOne;
         this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
         
         this.setup();
-        this.playerTwo = playerTwo;
         this.gamePlay();
     }
 
