@@ -24,13 +24,13 @@ export default class ConnectFour {
                 top.classList.add(`selecting-${game.currentPlayer.color}`);
             });
 
-            col.addEventListener('mouseleave', function(event) {
+            col.addEventListener('mouseleave', function() {
                 let top = game.getTop(col.dataset.col);
                 
                 top.classList.remove(`selecting-${game.currentPlayer.color}`);
             });
            
-            col.addEventListener('click', function (event) {
+            col.addEventListener('click', function () {
                 let top = game.getTop(col.dataset.col);
 
                 top.classList.remove(`selecting-${game.currentPlayer.color}`);
@@ -60,8 +60,11 @@ export default class ConnectFour {
             let nextRow = row + y;
             let nextCol = col + x;
             let cell = document.querySelector(`[data-row='${nextRow}'][data-col='${nextCol}']`);
-
-            while (nextRow >= 0 && nextRow < 6 && nextCol >= 0 && nextCol < 7 && cell.dataset.player === this.currentPlayer.color) {
+            let inXRange = nextCol >= 0 && nextCol < 7;
+            let inYRange = nextRow >= 0 && nextRow < 6;
+            let isPlayer = cell.dataset.player === this.currentPlayer.color;
+            
+            while (inXRange && inYRange && isPlayer) {
                 count += 1;
                 nextRow += y;
                 nextCol += x;
